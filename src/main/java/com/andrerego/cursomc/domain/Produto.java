@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
