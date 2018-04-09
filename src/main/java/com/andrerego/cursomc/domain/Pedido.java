@@ -17,39 +17,34 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @Entity
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	
-	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private Date instante;
-	
-	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
-	private Pagamento pagamento;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="cliente_id")
-	private Cliente cliente;
-	
-	@ManyToOne
-	@JoinColumn(name="endereco_de_entrega_id")
-	private Enderecos enderecoDeEntrega;
-	
-	@OneToMany(mappedBy="id.pedido")
-	private Set<ItemPedido> itens = new HashSet<>();
-	
-	
-	public Pedido() {
-		
-	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+	private Date instante;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
+	private Pagamento pagamento;
+
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "endereco_de_entrega_id")
+	private Enderecos enderecoDeEntrega;
+
+	@OneToMany(mappedBy = "id.pedido")
+	private Set<ItemPedido> itens = new HashSet<>();
+
+	public Pedido() {
+
+	}
 
 	public Pedido(Integer id, Date instante, Cliente cliente, Enderecos enderecoDeEntrega) {
 		super();
@@ -59,64 +54,61 @@ public class Pedido implements Serializable{
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
+	public double getValorTotal() {
+		double soma = 0.0;
+		for (ItemPedido ip : itens) {
+			soma = soma + ip.getSubTotal();
+		}
+		return soma;
+	}
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Date getInstante() {
 		return instante;
 	}
 
-
 	public void setInstante(Date instante) {
 		this.instante = instante;
 	}
-
 
 	public Pagamento getPagamento() {
 		return pagamento;
 	}
 
-
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
 	}
-
 
 	public Cliente getCliente() {
 		return cliente;
 	}
 
-
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
 
 	public Enderecos getEnderecoDeEntrega() {
 		return enderecoDeEntrega;
 	}
 
-
 	public void setEnderecoDeEntrega(Enderecos enderecoDeEntrega) {
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
-	
+
 	public Set<ItemPedido> getItens() {
-			return itens;
-		}
-	
-	
+		return itens;
+	}
+
 	public void setItens(Set<ItemPedido> itens) {
-			this.itens = itens;
-		}
+		this.itens = itens;
+	}
 
 	@Override
 	public int hashCode() {
@@ -125,7 +117,6 @@ public class Pedido implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -143,12 +134,5 @@ public class Pedido implements Serializable{
 			return false;
 		return true;
 	}
-
-
-	
-	
-	
-	
-	
 
 }
