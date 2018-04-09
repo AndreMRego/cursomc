@@ -28,13 +28,13 @@ public class Cliente implements Serializable{
 	private Integer id;
 	private String nome;
 	private String email;
-	private String cpfouCnpj;
+	private String cpfOuCnpj;
 	private Integer tipo;
 	
 	//proteger contra json ciclica, somente cliente pode serializar enderecos
 	
 	@OneToMany(mappedBy="cliente")
-	private List<Endereco> endereco= new ArrayList<>();
+	private List<Enderecos> enderecos= new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
@@ -48,12 +48,12 @@ public class Cliente implements Serializable{
 		
 	}
 
-	public Cliente(Integer id, String nome, String email,String cpfouCnpj, TipoCliente tipo) {
+	public Cliente(Integer id, String nome, String email,String cpfOuCnpj, TipoCliente tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.setCpfouCnpj(cpfouCnpj);
+		this.setCpfOuCnpj(cpfOuCnpj);
 		this.tipo = (tipo==null) ? null : tipo.getCod();
 	}
 
@@ -89,12 +89,12 @@ public class Cliente implements Serializable{
 		this.tipo = tipo.getCod();
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public List<Enderecos> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(List<Enderecos> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public Set<String> getTelefones() {
@@ -105,12 +105,12 @@ public class Cliente implements Serializable{
 		this.telefones = telefones;
 	}
 	
-	public String getCpfouCnpj() {
-		return cpfouCnpj;
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
 	}
 
-	public void setCpfouCnpj(String cpfouCnpj) {
-		this.cpfouCnpj = cpfouCnpj;
+	public void setCpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
 	
 	public List<Pedido> getPedidos() {

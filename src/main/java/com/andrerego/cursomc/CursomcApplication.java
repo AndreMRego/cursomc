@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.andrerego.cursomc.domain.Categoria;
 import com.andrerego.cursomc.domain.Cidade;
 import com.andrerego.cursomc.domain.Cliente;
-import com.andrerego.cursomc.domain.Endereco;
+import com.andrerego.cursomc.domain.Enderecos;
 import com.andrerego.cursomc.domain.Estado;
 import com.andrerego.cursomc.domain.ItemPedido;
 import com.andrerego.cursomc.domain.Pagamento;
@@ -111,10 +111,10 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		cli1.getTelefones().addAll(Arrays.asList("27363323","93838393"));
 		
-		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
-		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+		Enderecos e1 = new Enderecos(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Enderecos e2 = new Enderecos(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
 		
-		cli1.getEndereco().addAll(Arrays.asList(e1,e2));
+		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
 		
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		enderecoRepository.saveAll(Arrays.asList(e1,e2));

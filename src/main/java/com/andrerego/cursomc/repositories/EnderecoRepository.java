@@ -3,10 +3,10 @@ package com.andrerego.cursomc.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.andrerego.cursomc.domain.Endereco;
+import com.andrerego.cursomc.domain.Enderecos;
 
 @Repository
-public interface EnderecoRepository extends JpaRepository<Endereco, Integer> {
+public interface EnderecoRepository extends JpaRepository<Enderecos, Integer> {
 	
 
 }
