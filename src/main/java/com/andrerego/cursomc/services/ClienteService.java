@@ -57,7 +57,7 @@ public class ClienteService {
 		try {
 		repo.deleteById(id);
 		}catch(DataIntegrityViolationException e ) {
-			throw new DataIntegrityException("Não é possível porque há entidades relacionadas");
+			throw new DataIntegrityException("Não é possível porque há pedidos relacionadas");
 		}
 	}
 	
@@ -75,7 +75,7 @@ public class ClienteService {
 	}
 	
 	public Cliente fromDTO(ClienteNewDTO objDto) {
-		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfouCnpj(), TipoCliente.toEnum(objDto.getTipo()));
+		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(), TipoCliente.toEnum(objDto.getTipo()));
 		Cidade cid = new Cidade(objDto.getCidadeId(),null,null);
 		Enderecos end = new Enderecos(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli,cid);
 		cli.getEnderecos().add(end);

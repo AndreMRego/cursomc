@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Cliente implements Serializable{
 	
 	//proteger contra json ciclica, somente cliente pode serializar enderecos
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL)
 	private List<Enderecos> enderecos= new ArrayList<>();
 	
 	@ElementCollection
@@ -53,7 +54,7 @@ public class Cliente implements Serializable{
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.setCpfOuCnpj(cpfOuCnpj);
+		this.cpfOuCnpj=cpfOuCnpj;
 		this.tipo = (tipo==null) ? null : tipo.getCod();
 	}
 
@@ -105,13 +106,7 @@ public class Cliente implements Serializable{
 		this.telefones = telefones;
 	}
 	
-	public String getCpfOuCnpj() {
-		return cpfOuCnpj;
-	}
 
-	public void setCpfOuCnpj(String cpfOuCnpj) {
-		this.cpfOuCnpj = cpfOuCnpj;
-	}
 	
 	public List<Pedido> getPedidos() {
 		return pedidos;
@@ -120,7 +115,13 @@ public class Cliente implements Serializable{
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
+	}
 
+	public void setCpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
+	}
 
 	@Override
 	public int hashCode() {
@@ -146,6 +147,8 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 
 	
 	
