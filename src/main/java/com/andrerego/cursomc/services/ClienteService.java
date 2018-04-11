@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.andrerego.cursomc.domain.Cidade;
 import com.andrerego.cursomc.domain.Cliente;
-import com.andrerego.cursomc.domain.Enderecos;
+import com.andrerego.cursomc.domain.Endereco;
 import com.andrerego.cursomc.domain.enums.TipoCliente;
 import com.andrerego.cursomc.dto.ClienteDTO;
 import com.andrerego.cursomc.dto.ClienteNewDTO;
@@ -77,7 +77,7 @@ public class ClienteService {
 	public Cliente fromDTO(ClienteNewDTO objDto) {
 		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(), TipoCliente.toEnum(objDto.getTipo()));
 		Cidade cid = new Cidade(objDto.getCidadeId(),null,null);
-		Enderecos end = new Enderecos(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli,cid);
+		Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli,cid);
 		cli.getEnderecos().add(end);
 		cli.getTelefones().add(objDto.getTelefone1());
 		if(objDto.getTelefone2() !=null) {

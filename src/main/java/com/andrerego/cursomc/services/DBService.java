@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.andrerego.cursomc.domain.Categoria;
 import com.andrerego.cursomc.domain.Cidade;
 import com.andrerego.cursomc.domain.Cliente;
-import com.andrerego.cursomc.domain.Enderecos;
+import com.andrerego.cursomc.domain.Endereco;
 import com.andrerego.cursomc.domain.Estado;
 import com.andrerego.cursomc.domain.ItemPedido;
 import com.andrerego.cursomc.domain.Pagamento;
@@ -65,12 +65,14 @@ public class DBService {
 	public void instantiateTestDatabase() throws ParseException {
 		
 		Categoria cat1 = new Categoria(null,"Informática");
-		Categoria cat2 = new Categoria(null,"Escritŕio");
+		Categoria cat2 = new Categoria(null,"Escritório");
 		Categoria cat3 = new Categoria(null,"Cama mesa e banho");
 		Categoria cat4 = new Categoria(null,"Eletrônicos");
 		Categoria cat5 = new Categoria(null,"Jardinagem");
 		Categoria cat6 = new Categoria(null,"Decoração");
 		Categoria cat7 = new Categoria(null,"Perfumaria");
+		
+		
 
 		
 		
@@ -131,8 +133,8 @@ public class DBService {
 		
 		cli1.getTelefones().addAll(Arrays.asList("27363323","93838393"));
 		
-		Enderecos e1 = new Enderecos(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
-		Enderecos e2 = new Enderecos(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
 		

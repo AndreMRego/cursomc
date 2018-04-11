@@ -38,7 +38,7 @@ public class Cliente implements Serializable{
 	//proteger contra json ciclica, somente cliente pode serializar enderecos
 	
 	@OneToMany(mappedBy="cliente",cascade=CascadeType.ALL)
-	private List<Enderecos> enderecos= new ArrayList<>();
+	private List<Endereco> enderecos= new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
@@ -93,11 +93,11 @@ public class Cliente implements Serializable{
 		this.tipo = tipo.getCod();
 	}
 
-	public List<Enderecos> getEnderecos() {
+	public List<Endereco> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<Enderecos> enderecos) {
+	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
 	}
 

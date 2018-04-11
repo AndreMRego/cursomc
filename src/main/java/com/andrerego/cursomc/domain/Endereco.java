@@ -9,16 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Enderecos implements Serializable{
+public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	private Integer id;
 	private String logradouro;
 	private String numero;
 	private String complemento;
@@ -30,17 +29,15 @@ public class Enderecos implements Serializable{
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
-	public Enderecos() {
-		
+	public Endereco() {
 	}
 
-	public Enderecos(String id, String logradouro, String numero, String complemento, String bairro, String cep,
-			Cliente cliente,Cidade cidade) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
+			Cliente cliente, Cidade cidade) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -52,11 +49,11 @@ public class Enderecos implements Serializable{
 		this.setCidade(cidade);
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -132,7 +129,7 @@ public class Enderecos implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Enderecos other = (Enderecos) obj;
+		Endereco other = (Endereco) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -143,6 +140,4 @@ public class Enderecos implements Serializable{
 	
 	
 	
-	
-
 }
