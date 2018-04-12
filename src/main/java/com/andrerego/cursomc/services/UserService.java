@@ -1,9 +1,11 @@
 package com.andrerego.cursomc.services;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import com.andrerego.cursomc.security.UserSS;
 
+@Service
 public class UserService {
 	
 	public static UserSS authenticated() {
