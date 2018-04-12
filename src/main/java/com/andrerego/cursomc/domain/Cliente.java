@@ -17,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.andrerego.cursomc.domain.enums.TipoCliente;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
